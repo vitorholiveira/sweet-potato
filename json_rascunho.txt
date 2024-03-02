@@ -1,0 +1,144 @@
+Funcionalidades:
+
+Login
+Logout
+Montar rotina
+Iniciar rotina
+
+ENDPOINTS:
+
+GET:
+
+// mostra as rotinas do usuário
+1 - routines/{userID}
+data: [
+	{
+		routineID
+		routineIndex:
+		routineName:
+		userExercises: [
+			{
+				exerciseID:
+				exerciseName:
+				exerciseEquipment:
+			}, ...
+		]
+	}, ...
+]
+
+// mostra os exercícios para a montagem de um treino
+2 - exercises
+data: [
+	{
+		name:
+		muscle:
+		equipment:
+	}, ...
+]
+
+// mostra os dados do perfil de um usuário
+3 - profile/{userID}
+data: {
+	name:
+	username:
+	weight:
+	totalWorkouts:
+	duration: [ ... ]
+	volume: [ ... ]
+	reps: [ ... ]
+}
+
+// mostra o histórico de um usuário
+4 - workouts/{userID}
+data: [
+	{
+		id:
+		name:
+		duration:
+		volume:
+		numberExercises:
+		numberSets:
+	}, ...
+]
+
+// mostra os exercícios montados de um treino
+5 - userexercises/{workoutID}
+data: {
+	routineID:
+	muscleSplit: [
+		{
+			muscleName:
+			percentage:
+		}, ...
+	]
+	exercises: [
+		{
+			exerciseName:
+			sets: [
+				{
+					indexSet:
+					weight:
+					reps:
+				}, ...
+			]
+		}, ...
+	]
+}
+
+POST:
+
+// finaliza um treino
+1 - finishWorkout
+data: {
+	userID:
+	routineID:
+	workoutName:
+	volume:
+	numberSets:
+	dateStarted:
+	dateFinished:
+	userExercises: [
+		{
+			exerciseID:
+			indexExercise:
+			restTime:
+			sets: [
+				{
+					typeSet:
+					indexSet:
+					reps:
+					weight:
+					distance:
+					duration:
+				}, ...
+			]
+		}, ...
+	]
+}
+
+POST:
+
+// cria uma rotina
+1- createRoutine
+data: {
+	userID:
+	routineName:
+	userExercises: [
+		{
+			exerciseID:
+			indexExercise:
+			restTime:
+			sets: [
+				{
+					typeSet:
+					indexSet:
+					reps:
+					weight:
+					distance:
+					duration:
+				}, ...
+			]
+		}, ...
+	]
+}
+
